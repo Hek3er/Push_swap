@@ -4,18 +4,13 @@ CFLAGS = -Wall -Werror -Wextra
 SRCS = Push_swap.c parsing/parsing.c parsing/error.c parsing/parsing_2.c functions/instructions_1.c functions/indexing.c functions/instructions_2.c functions/instructions_3.c
 OFILES = $(SRCS:.c=.o)
 NAME = pushswap
-DEPENDENT = ft_libft/libft.a printf/libftprintf.a
+LIB = ft_libft/libft.a printf/libftprintf.a
 
 %.o: %.c includes/pushswap.h
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
-clean:
-	@echo "Removing Object Files!"
-	@cd ft_libft && make clean
-	@cd printf && make clean
-	@rm -rf $(OFILES)
 
 $(NAME): $(OFILES)
 	@echo "Compiling ft_printf!"
@@ -23,14 +18,19 @@ $(NAME): $(OFILES)
 	@echo "Compiling libft!"
 	@cd ft_libft && make && make clean
 	@echo "Compiling pushswap!"
-	@$(CC) $(CFLAGS) $(OFILES) $(DEPENDENT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OFILES) $(LIB) -o $(NAME)
 	@echo "Pushswap Compiled!"
-	@$(MAKE) clean
 
-fclean:
+clean:
+	@echo "Removing Object Files!"
+	@cd ft_libft && make clean
+	@cd printf && make clean
+	@rm -rf $(OFILES)
+
+fclean: clean
 	@cd ft_libft && make fclean
 	@cd printf && make fclean
 	@rm -rf $(NAME)
 
-re: clean all
+re: fclean all
 
