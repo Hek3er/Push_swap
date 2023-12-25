@@ -1,9 +1,9 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra 
 
-SRCS = Push_swap.c parsing/parsing.c parsing/error.c parsing/parsing_2.c functions/instructions_1.c functions/indexing.c functions/instructions_2.c functions/instructions_3.c
+SRCS = Push_swap.c parsing/parsing.c parsing/error.c parsing/parsing_2.c functions/the_free.c functions/instructions_1.c functions/indexing.c functions/instructions_2.c functions/instructions_3.c
 OFILES = $(SRCS:.c=.o)
-NAME = pushswap
+NAME = push_swap
 LIB = ft_libft/libft.a printf/libftprintf.a
 
 %.o: %.c includes/pushswap.h

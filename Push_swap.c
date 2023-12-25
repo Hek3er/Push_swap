@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:34 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/23 03:03:33 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/25 09:50:55 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,50 @@
 
 t_stack	*create_stack(int x, char **arg)
 {
-	int 	i;
-	int 	size;
+	t_var	var;
 	t_stack	*stack = NULL;
-	char	**valid;
 	
-	i = 0;
-	valid = get_arg(x, arg);
-	check_int(valid);
-	while (valid[i])
-		i++;
-	size = i;
-	while (--i >= 0)
-		push(ft_atoi(valid[i]), &stack, 4);
-	if (check_dup(&stack))
-		p_error("Duplicate", 1);
-	if (is_sorted(&stack))
-		p_error("Stack is already sorted", 2);
-	index_stack(&stack, size);
-	return (stack);
+	var.i = 0;
+	var.valid = get_arg(x, arg);
+	check_int(var.valid);
+	while (var.valid[var.i])
+		var.i++;
+	var.size = var.i;
+	while (--var.i >= 0)
+	{
+		if (ft_atoi(var.valid[var.i]) < -2147483648 || ft_atoi(var.valid[var.i]) > 2147483647)
+		{
+			free_arr(var.valid);
+			p_error("Error\n", 2);
+		}
+		push(ft_atoi(var.valid[var.i]), &stack, 4);
+	}
+	free_arr(var.valid);
+	if (check_dup(&stack) || is_nsorted(&stack) || var.size == 1)
+	{
+		free_stack(&stack);
+		p_error("Error\n", 2);
+	}
+	return (index_stack(&stack, var.size), stack);
+}
+
+void f(void)
+{
+	system("leaks push_swap");
 }
 
 int main(int ac, char **av)
 {
+	atexit(f);
 	t_stack *stack_a;
 
 	stack_a = create_stack(ac, av);
-
 	t_stack *curr = stack_a;
 	while (curr)
 	{
 		ft_printf("Value: %d --- Index: %d\n", curr -> value, curr->index);
 		curr = curr -> next;	
 	}
+	free_stack(&stack_a);
+	free_stack(&curr);
 }

@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:32 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/23 01:50:04 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/25 09:00:39 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,15 @@ static char	**t_join(char **arr1, char **arr2, int wc)
 	if (!var.result)
 		return (NULL);
 	fill_arr1(&var, arr1);
-	if (var.i < wc && !var.result)
+	if (!var.result)
 		return (free(var.result), NULL);
 	while (arr2 && arr2[var.j])
 	{
 		var.result[var.i + var.j] = ft_strdup(arr2[var.j]);
 		if (!var.result[var.i + var.j])
 		{
-			var.k = var.i + var.j;
-			while (var.k > 0)
-				free(var.result[--(var.k)]);
+			free_arr(var.result);
+			free_arr(arr2);
 			return (free(var.result), NULL);
 		}
 		var.j++;
@@ -64,20 +63,24 @@ char	**get_arg(int x, char **arg)
 	var.wc = 0;
 	var.result = NULL;
 	if (x <= 1)
-		p_error("Few Arguments", 1);
+		p_error("Error\n", 1);
 	while (var.i < x - 1)
 	{
 		var.j = 0;
 		var.temp = ft_split(arg[var.i + 1], ' ');
 		var.wc += count(arg[var.i + 1], ' ');
 		if (var.wc == 0)
-			p_error("Argument is not a number", 2);
+		{
+			free_arr(var.temp);
+			p_error("Error\n", 2);
+		}
 		var.result = t_join(var.result, var.temp, var.wc);
 		while (var.temp[var.j])
 			free(var.temp[var.j++]);
+		free(var.temp);
 		var.i++;
 	}
-	return (free(var.temp), var.result);
+	return (var.result);
 }
 
 void	check_int(char **result)
@@ -95,7 +98,7 @@ void	check_int(char **result)
 		while (result[i][j])
 		{
 			if (result[i][j] < '0' || result[i][j] > '9')
-				p_error("Argument is not a number", 3);
+				p_error("Error\n", 3);
 			j++;
 		}
 		i++;

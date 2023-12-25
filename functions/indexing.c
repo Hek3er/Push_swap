@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 02:48:32 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/23 03:59:36 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/24 03:50:23 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,37 @@ void	index_stack(t_stack **stack, int size)
 	}
 }
 
-// int	get_max(t_stack **stack)
-// {
-// 	t_stack	*current;
-// 	int		i;
+int	get_max(t_stack *stack)
+{
+	t_stack	*current;
+	int		i;
 
-// 	if (!stack || !(*stack))
-// 		return (0);
-// 	current = *stack;
-// 	while (current != NULL && current -> next != NULL)
-// 	{
-// 		if (current -> value > current -> next -> value)
-// 			i = current -> value;
-// 		current = current -> next;
-// 	}
-// }
+	if (!stack)
+		return (0);
+	current = stack;
+	while (current != NULL && current -> next != NULL)
+	{
+		if (current -> index > current -> next -> index)
+			i = current -> index;
+		current = current -> next;
+	}
+	return (i);
+}
+
+int	get_min(t_stack *stack)
+{
+	t_stack	*current;
+	int		i;
+
+	if (!stack)
+		return (0);
+	current = stack;
+	i = current -> index;
+	while (current != NULL)
+	{
+		if (current -> index < i)
+			i = current -> index;
+		current = current -> next;
+	}
+	return (i);
+}

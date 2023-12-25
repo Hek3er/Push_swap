@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 01:51:26 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/23 02:19:57 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/24 04:15:03 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_dup(t_stack **stack)
 	return (0);
 }
 
-int	is_sorted(t_stack **stack)
+int	is_nsorted(t_stack **stack)
 {
 	t_stack	*current;
 
