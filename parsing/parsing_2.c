@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 01:51:26 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/24 04:15:03 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/25 14:17:13 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,19 @@ int	is_nsorted(t_stack **stack)
 		current = current -> next;
 	}
 	return (1);
+}
+
+int	get_size(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	if (!stack)
+		return (0);
+	while (stack)
+	{
+		i++;
+		stack = stack ->next;
+	}
+	return (i);
 }

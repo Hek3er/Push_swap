@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:34 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 09:50:55 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/25 14:24:47 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,20 @@ t_stack	*create_stack(int x, char **arg)
 	return (index_stack(&stack, var.size), stack);
 }
 
-void f(void)
-{
-	system("leaks push_swap");
-}
+// void f(void)
+// {
+// 	system("leaks push_swap");
+// }
 
 int main(int ac, char **av)
 {
-	atexit(f);
+	//atexit(f);
 	t_stack *stack_a;
+	t_stack *curr = stack_a;
+	int		size;
 
 	stack_a = create_stack(ac, av);
-	t_stack *curr = stack_a;
-	while (curr)
-	{
-		ft_printf("Value: %d --- Index: %d\n", curr -> value, curr->index);
-		curr = curr -> next;	
-	}
+	size = get_size(stack_a);
+	sort_three(&stack_a);
 	free_stack(&stack_a);
-	free_stack(&curr);
 }

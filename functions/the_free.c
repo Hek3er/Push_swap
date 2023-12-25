@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 04:11:14 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 09:48:11 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/25 10:20:32 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_stack(t_stack **stack)
 	{
 		temp = current;	
 		current = current -> next;
-		free(current);
+		free(temp);
 	}
 }
 
@@ -30,12 +30,12 @@ void	free_arr(char **arr)
 {
 	int	i;
 
-	if (arr)
+	if (!arr)
 		return ;
 	i = 0;
 	while (arr[i])
 		i++;
-	while (i >= 0)
-		free(arr[i--]);
+	while (--i >= 0)
+		free(arr[i]);
 	free(arr);
 }

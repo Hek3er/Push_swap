@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:24 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/22 23:07:41 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/25 10:24:52 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	push(int data, t_stack **list, int c)
 
 	top_s = malloc(sizeof(t_stack));
 	if (!top_s)
+	{
+		free_stack(list);
 		return ;
+	}
 	top_s -> value = data;
 	top_s -> next = *list;
 	*list = top_s;

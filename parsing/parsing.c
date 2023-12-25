@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:32 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 09:00:39 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/25 13:12:14 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ static void	fill_arr1(t_var *var, char **arr1)
 		var->result[var->i] = ft_strdup(arr1[var->i]);
 		if (!var->result[var->i])
 		{
-			while (var->i > 0)
-				free(var->result[--(var->i)]);
-			free(var->result);
+			free_arr(var->result);
 			return ;
 		}
 		(var->i)++;
@@ -39,15 +37,14 @@ static char	**t_join(char **arr1, char **arr2, int wc)
 		return (NULL);
 	fill_arr1(&var, arr1);
 	if (!var.result)
-		return (free(var.result), NULL);
+		return (free_arr(var.result), NULL);
 	while (arr2 && arr2[var.j])
 	{
 		var.result[var.i + var.j] = ft_strdup(arr2[var.j]);
 		if (!var.result[var.i + var.j])
 		{
 			free_arr(var.result);
-			free_arr(arr2);
-			return (free(var.result), NULL);
+			return (NULL);
 		}
 		var.j++;
 	}
@@ -75,9 +72,9 @@ char	**get_arg(int x, char **arg)
 			p_error("Error\n", 2);
 		}
 		var.result = t_join(var.result, var.temp, var.wc);
-		while (var.temp[var.j])
-			free(var.temp[var.j++]);
-		free(var.temp);
+		if (!var.result)
+			return (free_arr(var.result), NULL);
+		free_arr(var.temp);
 		var.i++;
 	}
 	return (var.result);
@@ -98,7 +95,10 @@ void	check_int(char **result)
 		while (result[i][j])
 		{
 			if (result[i][j] < '0' || result[i][j] > '9')
+			{
+				free_arr(result);
 				p_error("Error\n", 3);
+			}
 			j++;
 		}
 		i++;

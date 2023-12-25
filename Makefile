@@ -1,7 +1,7 @@
-CC = cc
-CFLAGS = -Wall -Werror -Wextra 
+CC = clang #need to change
+CFLAGS = -g # need to change
 
-SRCS = Push_swap.c parsing/parsing.c parsing/error.c parsing/parsing_2.c functions/the_free.c functions/instructions_1.c functions/indexing.c functions/instructions_2.c functions/instructions_3.c
+SRCS = Push_swap.c functions/sort.c parsing/parsing.c parsing/error.c parsing/parsing_2.c functions/the_free.c functions/instructions_1.c functions/indexing.c functions/instructions_2.c functions/instructions_3.c
 OFILES = $(SRCS:.c=.o)
 NAME = push_swap
 LIB = ft_libft/libft.a printf/libftprintf.a
