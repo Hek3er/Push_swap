@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:29 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 14:18:47 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/25 14:36:15 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int		get_bottom(t_stack *stack);
  *	Sort!
 */
 
+void	sort_two(t_stack **stack);
 void	sort_three(t_stack **stack);
 
 #endif

@@ -6,11 +6,22 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 14:02:00 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 14:29:32 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/25 14:35:28 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
+
+void	sort_two(t_stack **stack)
+{
+	int	top;
+	int	bottom;
+
+	top = (*stack) -> value;
+	bottom = (*stack) -> next -> value;
+	if (top > bottom)
+		swap(stack, 1);
+}
 
 void	sort_three(t_stack **stack)
 {

@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:34 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 14:24:47 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/25 14:36:03 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ int main(int ac, char **av)
 
 	stack_a = create_stack(ac, av);
 	size = get_size(stack_a);
-	sort_three(&stack_a);
+	if (size ==3)
+		sort_three(&stack_a);
+	else if (size == 2)
+		sort_two(&stack_a);
 	free_stack(&stack_a);
 }
