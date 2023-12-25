@@ -6,11 +6,29 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:34 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 14:36:03 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/25 15:46:26 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/pushswap.h"
+
+void	fill_stack(t_stack **stack, t_var *var)
+{
+	while (--var->i >= 0)
+	{
+		if (ft_atoi(var->valid[var->i]) < -2147483648 || ft_atoi(var->valid[var->i]) > 2147483647)
+		{
+			free_arr(var->valid);
+			p_error("Error\n", 2);
+		}
+		push(ft_atoi(var->valid[var->i]), stack, 4);
+		if (is_stack_empty(stack))
+		{
+			free_stack(stack);
+			p_error("Error\n", 2); // exit if stack 5awi
+		}
+	}
+}
 
 t_stack	*create_stack(int x, char **arg)
 {
@@ -19,19 +37,13 @@ t_stack	*create_stack(int x, char **arg)
 	
 	var.i = 0;
 	var.valid = get_arg(x, arg);
+	if (!var.valid)
+		p_error("Error\n", 2); // check if null
 	check_int(var.valid);
 	while (var.valid[var.i])
 		var.i++;
 	var.size = var.i;
-	while (--var.i >= 0)
-	{
-		if (ft_atoi(var.valid[var.i]) < -2147483648 || ft_atoi(var.valid[var.i]) > 2147483647)
-		{
-			free_arr(var.valid);
-			p_error("Error\n", 2);
-		}
-		push(ft_atoi(var.valid[var.i]), &stack, 4);
-	}
+	fill_stack(&stack, &var);
 	free_arr(var.valid);
 	if (check_dup(&stack) || is_nsorted(&stack) || var.size == 1)
 	{
@@ -41,14 +53,14 @@ t_stack	*create_stack(int x, char **arg)
 	return (index_stack(&stack, var.size), stack);
 }
 
-// void f(void)
-// {
-// 	system("leaks push_swap");
-// }
+void f(void)
+{
+	system("leaks push_swap");
+}
 
 int main(int ac, char **av)
 {
-	//atexit(f);
+	atexit(f);
 	t_stack *stack_a;
 	t_stack *curr = stack_a;
 	int		size;

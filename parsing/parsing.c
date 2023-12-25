@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:32 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 13:12:14 by azainabi         ###   ########.fr       */
+/*   Updated: 2023/12/25 15:39:17 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,13 @@ static char	**t_join(char **arr1, char **arr2, int wc)
 	{
 		var.result[var.i + var.j] = ft_strdup(arr2[var.j]);
 		if (!var.result[var.i + var.j])
-		{
-			free_arr(var.result);
-			return (NULL);
-		}
+			return (free_arr(var.result), NULL);
 		var.j++;
 	}
+	if (arr1)
+		free_arr(arr1);
+	if (arr2)
+		free_arr(arr2);
 	var.result[var.i + var.j] = NULL;
 	return (var.result);
 }
@@ -74,7 +75,6 @@ char	**get_arg(int x, char **arg)
 		var.result = t_join(var.result, var.temp, var.wc);
 		if (!var.result)
 			return (free_arr(var.result), NULL);
-		free_arr(var.temp);
 		var.i++;
 	}
 	return (var.result);
