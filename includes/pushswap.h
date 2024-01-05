@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:29 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 14:36:15 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/05 20:09:52 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		get_size(t_stack *stack);
  *	Instructions!
 */
 
-void	push(int data, t_stack **list, int c);
+void	push(int data, int index, t_stack **list, int c);
 void	pop(t_stack **list);
 void	swap(t_stack **list, int c);
 void	print_s(t_stack **list);
@@ -77,6 +77,7 @@ int		get_top(t_stack *stack);
 int		get_max(t_stack *stack);
 int		get_min(t_stack *stack);
 int		get_bottom(t_stack *stack);
+int		get_position(t_stack *stack, int ind);
 
 /*
  *	Sort!
@@ -84,5 +85,7 @@ int		get_bottom(t_stack *stack);
 
 void	sort_two(t_stack **stack);
 void	sort_three(t_stack **stack);
+void	sort_four(t_stack **stack_a, t_stack **stack_b);
+void	sort_five(t_stack **stack_a, t_stack **stack_b);
 
 #endif

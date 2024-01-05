@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:26:27 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/24 03:55:55 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/05 15:57:33 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	push_from_stack_b(t_stack **stack_a, t_stack **stack_b)
 {
 		if (is_stack_empty(stack_b) == 1)
 			return ;
-		push((*stack_b) -> value, stack_a,  1);
+		push((*stack_b) -> value, (*stack_b)->index, stack_a,  1);
 		pop(stack_b);
 }
 

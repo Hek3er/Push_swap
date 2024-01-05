@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:34 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 15:46:26 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/05 20:09:35 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	fill_stack(t_stack **stack, t_var *var)
 			free_arr(var->valid);
 			p_error("Error\n", 2);
 		}
-		push(ft_atoi(var->valid[var->i]), stack, 4);
+		push(ft_atoi(var->valid[var->i]), 0,stack, 4);
 		if (is_stack_empty(stack))
 		{
 			free_stack(stack);
@@ -60,9 +60,9 @@ void f(void)
 
 int main(int ac, char **av)
 {
-	atexit(f);
+	//atexit(f);
 	t_stack *stack_a;
-	t_stack *curr = stack_a;
+	t_stack	*stack_b = NULL;
 	int		size;
 
 	stack_a = create_stack(ac, av);
@@ -71,5 +71,10 @@ int main(int ac, char **av)
 		sort_three(&stack_a);
 	else if (size == 2)
 		sort_two(&stack_a);
+	else if (size == 4)
+		sort_four(&stack_a, &stack_b);
+	else if (size == 5)
+		sort_five(&stack_a, &stack_b);
+	print_s(&stack_a);
 	free_stack(&stack_a);
 }
