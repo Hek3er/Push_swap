@@ -39,18 +39,19 @@ void	index_stack(t_stack **stack, int size)
 int	get_max(t_stack *stack)
 {
 	t_stack	*current;
-	int		i;
+	int		max;
 
 	if (!stack)
-		return (0);
+		return (-1);
 	current = stack;
-	while (current != NULL && current -> next != NULL)
+	max = current->index;
+	while (current != NULL)
 	{
-		if (current -> index > current -> next -> index)
-			i = current -> index;
-		current = current -> next;
+		if (current->index > max)
+			max = current->index;
+		current = current->next;
 	}
-	return (i);
+	return (max);
 }
 
 int	get_min(t_stack *stack)
@@ -58,8 +59,9 @@ int	get_min(t_stack *stack)
 	t_stack	*current;
 	int		i;
 
+	i = 0;
 	if (!stack)
-		return (0);
+		return (-1);
 	current = stack;
 	i = current -> index;
 	while (current != NULL)
@@ -76,8 +78,9 @@ int	get_bottom(t_stack *stack)
 	t_stack	*current;
 	int		i;
 
+	i = 0;
 	if (!stack)
-		return (0);
+		return (-1);
 	current = stack;
 	while (current -> next != NULL)
 		current = current -> next;

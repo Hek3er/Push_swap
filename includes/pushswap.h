@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:29 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/05 20:09:52 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/06 16:36:42 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ typedef struct var
 	int 	j;
 	int		k;
 	int		wc;
+	int		mid;
+	int		offset;
+	int		start;
+	int		end;
 	int		size;
 	char	**valid;
 	char	**result;
@@ -87,5 +91,8 @@ void	sort_two(t_stack **stack);
 void	sort_three(t_stack **stack);
 void	sort_four(t_stack **stack_a, t_stack **stack_b);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
+int		*fill_arr(t_stack *stack);
+void	quick_sort(int *arr, int len);
+void	large_sort(t_stack **stack_a, t_stack **stack_b, int size);
 
 #endif

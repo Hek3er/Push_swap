@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:34 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/05 20:09:35 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/06 23:26:53 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int main(int ac, char **av)
 
 	stack_a = create_stack(ac, av);
 	size = get_size(stack_a);
+	//ft_printf("size: %d\n", size);
 	if (size ==3)
 		sort_three(&stack_a);
 	else if (size == 2)
@@ -75,6 +76,12 @@ int main(int ac, char **av)
 		sort_four(&stack_a, &stack_b);
 	else if (size == 5)
 		sort_five(&stack_a, &stack_b);
-	print_s(&stack_a);
+	else 
+		large_sort(&stack_a, &stack_b, size);
+	//ft_printf("\n++++++++++++++++stack_a++++++++++++\n");
+	//print_s(&stack_a);
+	//ft_printf("++++++++++++++++stack_b++++++++++++\n");
+	//print_s(&stack_b);
+	//ft_printf("is stack sorted: %d", is_nsorted(&stack_a));
 	free_stack(&stack_a);
 }
