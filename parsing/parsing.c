@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:32 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 15:39:17 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 11:47:57 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	**get_arg(int x, char **arg)
 	var.wc = 0;
 	var.result = NULL;
 	if (x <= 1)
-		p_error("Error\n", 1);
+		exit(1);
 	while (var.i < x - 1)
 	{
 		var.j = 0;

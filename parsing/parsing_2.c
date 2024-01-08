@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/23 01:51:26 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 14:17:13 by azainabi         ###   ########.fr       */
+/*   Created: 2024/01/08 11:07:40 by azainabi          #+#    #+#             */
+/*   Updated: 2024/01/08 11:15:26 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	get_size(t_stack *stack)
 	int	i;
 
 	i = 0;
-	if (!stack)
+	if (is_stack_empty(&stack))
 		return (0);
 	while (stack)
 	{
@@ -60,4 +60,20 @@ int	get_size(t_stack *stack)
 		stack = stack ->next;
 	}
 	return (i);
+}
+
+void	check_line(char *line, t_stack **stack_a, t_stack **stack_b)
+{
+	if (!ft_strncmp(line, "sa", 2)|| !ft_strncmp(line, "sb", 2))
+		check_swap(line, stack_a, stack_b);
+	else if (!ft_strncmp(line, "pa", 2)|| !ft_strncmp(line, "pb", 2))
+		check_push(line, stack_a, stack_b);
+	else if (!ft_strncmp(line, "rra", 3) || !ft_strncmp(line, "rrb", 3) 
+			|| !ft_strncmp(line, "rrr", 3))
+		check_rrotate(line, stack_a, stack_b);
+	else if (!ft_strncmp(line, "ra", 2) || !ft_strncmp(line, "rb", 2) 
+			|| !ft_strncmp(line, "rr", 2))
+		check_rotate(line, stack_a, stack_b);
+	else
+		free_exit(line, stack_a, stack_b);
 }

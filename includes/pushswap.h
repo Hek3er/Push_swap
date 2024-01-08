@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/22 10:21:29 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/06 16:36:42 by azainabi         ###   ########.fr       */
+/*   Created: 2024/01/08 11:17:10 by azainabi          #+#    #+#             */
+/*   Updated: 2024/01/08 11:58:41 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 
 #include "../ft_libft/libft.h"
 #include "../printf/ft_printf.h"
+#include "../get_next_line/get_next_line.h"
 #include <stdlib.h>
 
-typedef struct stack
+typedef struct s_stack
 {
 	int				value;
 	int				index;
-	struct stack	*next;
+	struct s_stack	*next;
 }	t_stack;
 
 
-typedef struct var
+typedef struct s_var
 {
 	int		i;
 	int 	j;
@@ -36,6 +37,7 @@ typedef struct var
 	int		start;
 	int		end;
 	int		size;
+	int		div;
 	char	**valid;
 	char	**result;
 	char	**temp;
@@ -51,6 +53,13 @@ void	p_error(char *s, int x);
 int		check_dup(t_stack **stack);
 int		is_nsorted(t_stack **stack);
 int		get_size(t_stack *stack);
+t_stack	*create_stack(int x, char **arg);
+void	free_exit(char *line, t_stack **stack_a, t_stack **stack_b);
+void	check_swap(char *line, t_stack **stack_a, t_stack **stack_b);
+void	check_push(char *line, t_stack **stack_a, t_stack **stack_b);
+void	check_rotate(char *line, t_stack **stack_a, t_stack **stack_b);
+void	check_rrotate(char *line, t_stack **stack_a, t_stack **stack_b);
+void	check_line(char *line, t_stack **stack_a, t_stack **stack_b);
 
 /*
  *	Instructions!
@@ -82,6 +91,8 @@ int		get_max(t_stack *stack);
 int		get_min(t_stack *stack);
 int		get_bottom(t_stack *stack);
 int		get_position(t_stack *stack, int ind);
+void	put_top(t_stack **stack_b);
+int		get_div(int size);
 
 /*
  *	Sort!
