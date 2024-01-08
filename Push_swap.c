@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:08:00 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 12:02:12 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:42:25 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/pushswap.h"
 
-void f(void)
+int	main(int ac, char **av)
 {
-	system("leaks push_swap");
-}
-
-int main(int ac, char **av)
-{
-	//atexit(f);
-	t_stack *stack_a;
-	t_stack	*stack_b = NULL;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 	int		size;
 
+	stack_b = NULL;
 	stack_a = create_stack(ac, av);
 	size = get_size(stack_a);
-	if (size ==3)
+	if (size == 3)
 		sort_three(&stack_a);
 	else if (size == 2)
 		sort_two(&stack_a);
@@ -34,7 +29,7 @@ int main(int ac, char **av)
 		sort_four(&stack_a, &stack_b);
 	else if (size == 5)
 		sort_five(&stack_a, &stack_b);
-	else 
+	else
 		large_sort(&stack_a, &stack_b, size);
 	free_stack(&stack_a);
 }

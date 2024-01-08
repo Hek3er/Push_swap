@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 21:27:35 by azainabi          #+#    #+#             */
-/*   Updated: 2023/11/19 02:59:40 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:05:24 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	format(va_list type, const char *str, int *len, int *i)
 		*(len) += ft_print_uhex(va_arg(type, unsigned int));
 	else if (str[*i + 1] == 'p')
 		*(len) += ft_print_p(va_arg(type, void *));
-	else 
+	else
 		*(len) += ft_putchar(str[*i + 1]);
 	*i += 2;
 	return (*len);

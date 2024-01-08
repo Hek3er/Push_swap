@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:13:43 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 11:49:33 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:02:20 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@ static void	fill_stack(t_stack **stack, t_var *var)
 {
 	while (--var->i >= 0)
 	{
-		if (ft_atoi(var->valid[var->i]) < -2147483648 || ft_atoi(var->valid[var->i]) > 2147483647)
+		if (ft_atoi(var->valid[var->i]) < -2147483648
+			|| ft_atoi(var->valid[var->i]) > 2147483647)
 		{
 			free_arr(var->valid);
 			p_error("Error\n", 2);
 		}
-		push(ft_atoi(var->valid[var->i]), 0,stack, 4);
+		push(ft_atoi(var->valid[var->i]), 0, stack, 4);
 		if (is_stack_empty(stack))
 		{
 			free_stack(stack);
-			p_error("Error\n", 2); // exit if stack 5awi
+			p_error("Error\n", 2);
 		}
 	}
 }
@@ -33,12 +34,13 @@ static void	fill_stack(t_stack **stack, t_var *var)
 t_stack	*create_stack(int x, char **arg)
 {
 	t_var	var;
-	t_stack	*stack = NULL;
-	
+	t_stack	*stack;
+
+	stack = NULL;
 	var.i = 0;
 	var.valid = get_arg(x, arg);
 	if (!var.valid)
-		p_error("Error\n", 2); // check if null
+		p_error("Error\n", 2);
 	check_int(var.valid);
 	while (var.valid[var.i])
 		var.i++;

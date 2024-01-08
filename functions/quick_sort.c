@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 15:32:46 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/06 16:25:03 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:49:29 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int	*fill_arr(t_stack *stack)
 
 static void	change(int *x, int *y)
 {
-	int	tmp = *x;
+	int	tmp;
+
+	tmp = *x;
 	*x = *y;
 	*y = tmp;
 }

@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 16:25:20 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 12:02:03 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:55:06 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,25 @@ void	init_sort(t_var *var, int size, int *arr)
 
 int	is_in_stack(t_stack *stack, int *arr, int min, int max)
 {
-    while (stack)
-    {
-        int i = min;
-        while (i <= max)
-        {
-            if (stack->value == arr[i])
-                return (1);
-            i++;
-        }
-        stack = stack->next;
-    }
-    return (0);
+	int	i;
+
+	while (stack)
+	{
+		i = min;
+		while (i <= max)
+		{
+			if (stack->value == arr[i])
+				return (1);
+			i++;
+		}
+		stack = stack->next;
+	}
+	return (0);
 }
 
 void	fill_stack_b(t_stack **stack_a, t_stack **stack_b, t_var *var, int *arr)
 {
-	int	p;
+	int		p;
 	t_stack	*stack;
 
 	stack = *stack_a;
@@ -68,7 +70,7 @@ void	fill_stack_b(t_stack **stack_a, t_stack **stack_b, t_var *var, int *arr)
 		}
 		else if (get_position(*stack_a, stack->index) < p)
 			rotate(stack_a, 1);
-		else 
+		else
 			r_rotate(stack_a, 1);
 		stack = *stack_a;
 	}
@@ -94,12 +96,9 @@ void	large_sort(t_stack **stack_a, t_stack **stack_b, int size)
 		if (var.end > size)
 			var.end = size;
 	}
-	t_stack	*tmp = *stack_b;
-	while (!is_stack_empty(&tmp))
+	while (!is_stack_empty(stack_b))
 	{
 		put_top(stack_b);
 		push_from_stack_b(stack_a, stack_b);
-		tmp = *stack_b;
 	}
 }
-

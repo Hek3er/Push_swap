@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 22:23:42 by azainabi          #+#    #+#             */
-/*   Updated: 2023/11/17 22:21:23 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:05:06 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_print_unsigned(unsigned int n)
 	}
 	else
 	{
-		len += ft_print_unsigned(n / 10); 
+		len += ft_print_unsigned(n / 10);
 		len += ft_print_unsigned(n % 10);
 		if (len < 0)
 			return (-1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 04:11:14 by azainabi          #+#    #+#             */
-/*   Updated: 2023/12/25 10:20:32 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:58:00 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	free_stack(t_stack **stack)
 {
 	t_stack	*current;
 	t_stack	*temp;
-	
+
 	current = *stack;
 	while (current)
 	{
-		temp = current;	
+		temp = current;
 		current = current -> next;
 		free(temp);
 	}

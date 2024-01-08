@@ -6,17 +6,17 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:17:10 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 11:58:41 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:59:22 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSHSWAP_H
-#define PUSHSWAP_H
+# define PUSHSWAP_H
 
-#include "../ft_libft/libft.h"
-#include "../printf/ft_printf.h"
-#include "../get_next_line/get_next_line.h"
-#include <stdlib.h>
+# include "../ft_libft/libft.h"
+# include "../printf/ft_printf.h"
+# include "../get_next_line/get_next_line.h"
+# include <stdlib.h>
 
 typedef struct s_stack
 {
@@ -25,11 +25,10 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-
 typedef struct s_var
 {
 	int		i;
-	int 	j;
+	int		j;
 	int		k;
 	int		wc;
 	int		mid;

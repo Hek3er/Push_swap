@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:15:59 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 11:16:02 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:42:54 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
-	t_stack *stack_b = NULL;
+	t_stack	*stack_b;
 	char	*line;
 
+	stack_b = NULL;
 	stack_a = create_stack(ac, av);
 	line = get_next_line(0);
 	while (line)

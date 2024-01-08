@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_digit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 22:14:19 by azainabi          #+#    #+#             */
-/*   Updated: 2023/11/17 22:24:47 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:04:46 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_putnbr(int n)
 	}
 	else
 	{
-		len += ft_putnbr(ln / 10); 
+		len += ft_putnbr(ln / 10);
 		len += ft_putnbr(ln % 10);
 		if (len < 0)
 			return (-1);

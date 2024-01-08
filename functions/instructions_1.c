@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instructions_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:24 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/05 16:34:13 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 14:46:46 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	pop(t_stack **list)
 
 	if (!list || !(*list))
 		return ;
-	current = (*list) -> next;
+	current = (*list)->next;
 	free(*list);
 	*list = current;
 }
@@ -45,14 +45,14 @@ void	swap(t_stack **list, int c)
 	int	temp;
 	int	temp_ind;
 
-	if (!list || !(*list) || !(*list) -> next)
+	if (!list || !(*list) || !(*list)->next)
 		return ;
-	temp = (*list) -> value;
-	temp_ind = (*list) -> index;
-	(*list) -> value = (*list) -> next -> value;
-	(*list) -> next -> value = temp;
-	(*list) -> index = (*list) -> next -> index;
-	(*list) ->next->index = temp_ind;
+	temp = (*list)->value;
+	temp_ind = (*list)->index;
+	(*list)->value = (*list)->next->value;
+	(*list)->next->value = temp;
+	(*list)->index = (*list)->next->index;
+	(*list)->next->index = temp_ind;
 	print_instructions("sa", "sb", "ss", c);
 }
 
@@ -65,15 +65,15 @@ void	print_s(t_stack **list)
 	current = *list;
 	while (current != NULL)
 	{
-		ft_printf("%d\n", current -> value);
-		current = current -> next;
+		ft_printf("%d\n", current->value);
+		current = current->next;
 	}
 }
 
 void	push_from_stack_a(t_stack **stack_a, t_stack **stack_b)
 {
-		if (is_stack_empty(stack_a) == 1)
-			return ;
-		push((*stack_a)->value,(*stack_a)->index ,stack_b,  2);
-		pop(stack_a);
+	if (is_stack_empty(stack_a) == 1)
+		return ;
+	push((*stack_a)->value, (*stack_a)->index, stack_b, 2);
+	pop(stack_a);
 }
