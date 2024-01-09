@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 22:58:29 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 14:43:20 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:24:46 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ long	ft_atoi(const char *str)
 {
 	int				i;
 	int				neg;
-	long			ret;
+	long long		ret;
 
 	i = 0;
 	neg = 1;

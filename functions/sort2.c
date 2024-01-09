@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 16:25:20 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 14:55:06 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:36:37 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,17 @@ int	is_found(int *arr, int value, int start, int end)
 	return (0);
 }
 
-void	init_sort(t_var *var, int size, int *arr)
+void	init_sort(t_var *var, int size)
 {
 	var->div = get_div(var->size);
 	var->mid = (size / 2) - 1;
 	var->offset = size / var->div;
 	var->start = var->mid - var->offset;
+	if (var->start < 0)
+		var->start = 0;
 	var->end = var->mid + var->offset;
+	if (var->end > var->size)
+		var->end = var->size;
 	var->j = 0;
 }
 
@@ -64,7 +68,9 @@ void	fill_stack_b(t_stack **stack_a, t_stack **stack_b, t_var *var, int *arr)
 		if (is_found(arr, stack->value, var->start, var->end))
 		{
 			push_from_stack_a(stack_a, stack_b);
-			if ((get_size(*stack_b) > 1) && stack->value < var->mid)
+			if ((get_size(*stack_b) > 1) && (get_size(*stack_a) > 1) && stack->value < var->mid && !is_found(arr, stack->next->value, var->start, var->end))
+				rotate_both(stack_a, stack_b);
+			else if ((get_size(*stack_b) > 1) && stack->value < var->mid)
 				rotate(stack_b, 2);
 			var->size--;
 		}
@@ -79,13 +85,12 @@ void	fill_stack_b(t_stack **stack_a, t_stack **stack_b, t_var *var, int *arr)
 void	large_sort(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	int		*arr;
-	int		i;
 	t_var	var;
 
 	var.size = size;
 	arr = fill_arr(*stack_a);
 	quick_sort(arr, size);
-	init_sort(&var, size, arr);
+	init_sort(&var, size);
 	while (!is_stack_empty(stack_a))
 	{
 		fill_stack_b(stack_a, stack_b, &var, arr);

@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 14:02:00 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 14:51:35 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:17:50 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ static void	sort_min(t_stack **stack_a, t_stack **stack_b, int min)
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
 	int	min;
-	int	bottom;
 
 	min = get_min(*stack_a);
 	sort_min(stack_a, stack_b, min);

@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:54:09 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 14:44:03 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 19:35:38 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	get_div(int size)
 	else if (size <= 100)
 		div = 12;
 	else if (size <= 500)
-		div = 19;
+		div = 17;
 	else
 		div = 30;
 	return (div);

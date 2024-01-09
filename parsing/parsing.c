@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:21:32 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 11:47:57 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:44:12 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ void	check_int(char **result)
 			j++;
 		while (result[i][j])
 		{
-			if (result[i][j] < '0' || result[i][j] > '9')
+			if (result[i][j] < '0' || result[i][j] > '9' ||
+			ft_strlen(result[i]) > 11)
 			{
 				free_arr(result);
 				p_error("Error\n", 3);

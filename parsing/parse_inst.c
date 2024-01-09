@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:07:22 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 14:59:56 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:49:13 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ void	check_swap(char *line, t_stack **stack_a, t_stack **stack_b)
 		if (get_size(*stack_b) <= 1)
 			free_exit(line, stack_a, stack_b);
 		swap(stack_b, 4);
+	}
+	else if (ft_strncmp(line, "ss", 2) == 0)
+	{
+		if (get_size(*stack_b) <= 1)
+			free_exit(line, stack_a, stack_b);
+		swap_both(stack_a, stack_b);
 	}
 }
 
