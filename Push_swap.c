@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:08:00 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 14:42:25 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/11 21:16:22 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int	main(int ac, char **av)
 	else if (size == 5)
 		sort_five(&stack_a, &stack_b);
 	else
-		large_sort(&stack_a, &stack_b, size);
+		large_sort(&stack_a, &stack_b);
 	free_stack(&stack_a);
 }

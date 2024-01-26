@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 01:08:18 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/09 14:40:09 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/10 00:33:30 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ int	get_top(t_stack *stack)
 {
 	if (!stack)
 		return (0);
-	return (stack -> value);
+	return (stack->index);
 }

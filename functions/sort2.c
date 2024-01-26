@@ -6,104 +6,98 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 16:25:20 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/09 14:36:37 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/26 21:11:59 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-int	is_found(int *arr, int value, int start, int end)
+int	found(t_stack **stack_a, int pivot)
 {
-	while (start <= end)
-	{
-		if (arr[start] == value)
-			return (1);
-		else
-			start++;
-	}
-	return (0);
-}
+	t_stack	*stack;
+	int		i;
 
-void	init_sort(t_var *var, int size)
-{
-	var->div = get_div(var->size);
-	var->mid = (size / 2) - 1;
-	var->offset = size / var->div;
-	var->start = var->mid - var->offset;
-	if (var->start < 0)
-		var->start = 0;
-	var->end = var->mid + var->offset;
-	if (var->end > var->size)
-		var->end = var->size;
-	var->j = 0;
-}
-
-int	is_in_stack(t_stack *stack, int *arr, int min, int max)
-{
-	int	i;
-
+	i = 0;
+	stack = *stack_a;
 	while (stack)
 	{
-		i = min;
-		while (i <= max)
+		if (stack->index < pivot)
+			return (i);
+		else
 		{
-			if (stack->value == arr[i])
-				return (1);
+			stack = stack->next;
 			i++;
 		}
-		stack = stack->next;
+	}
+	return (-1);
+}
+
+void	init_sort(t_var *var)
+{
+	var->piv1 = var->size / 4; //previous was 3 and 6
+	var->rem = -1;
+	var->piv2 = var->size / 8;
+}
+
+int	is_in_stack(t_stack *stack, int pivot)
+{
+	while (stack)
+	{
+		if (stack->index < pivot)
+			return (1);
+		else
+			stack = stack->next;
 	}
 	return (0);
 }
 
-void	fill_stack_b(t_stack **stack_a, t_stack **stack_b, t_var *var, int *arr)
+void	fill_stack_b(t_stack **stack_a, t_stack **stack_b, t_var *var)
 {
-	int		p;
-	t_stack	*stack;
+	int		top1;
+	int		top2;
 
-	stack = *stack_a;
-	while (is_in_stack(*stack_a, arr, var->start, var->end))
+	while (is_in_stack(*stack_a, var->piv1))
 	{
-		p = var->size / 2;
-		if (is_found(arr, stack->value, var->start, var->end))
+		top1 = get_top(*stack_a);
+		top2 = get_top(*stack_b);
+		if (top1 >= var->piv1 && top2 > var->rem && top2 < var->piv2)
+			rotate_both(stack_a, stack_b);
+		else if ((*stack_a)->index < var->piv1)
 		{
 			push_from_stack_a(stack_a, stack_b);
-			if ((get_size(*stack_b) > 1) && (get_size(*stack_a) > 1) && stack->value < var->mid && !is_found(arr, stack->next->value, var->start, var->end))
-				rotate_both(stack_a, stack_b);
-			else if ((get_size(*stack_b) > 1) && stack->value < var->mid)
-				rotate(stack_b, 2);
+			if (get_size(*stack_b) >= 2)
+			{
+				if ((*stack_b)->index > var->rem && (*stack_b)->index < var->piv2)
+					rotate(stack_b, 2);
+			}
 			var->size--;
 		}
-		else if (get_position(*stack_a, stack->index) < p)
+		else if (found(stack_a, var->piv1) <= (var->size / 2))
 			rotate(stack_a, 1);
 		else
 			r_rotate(stack_a, 1);
-		stack = *stack_a;
 	}
 }
 
-void	large_sort(t_stack **stack_a, t_stack **stack_b, int size)
+void large_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	int		*arr;
-	t_var	var;
+    t_var   var;
 
-	var.size = size;
-	arr = fill_arr(*stack_a);
-	quick_sort(arr, size);
-	init_sort(&var, size);
-	while (!is_stack_empty(stack_a))
+    var.size = get_size(*stack_a);
+    var.i = 0;
+    init_sort(&var);
+    while (get_size(*stack_a) > 3)
+    {
+        fill_stack_b(stack_a, stack_b, &var);
+        var.rem = var.piv1;
+        var.piv1 += var.size / 4; // previous was 3 and 6
+        var.piv2 = (var.size / 8) + var.rem;
+    }
+    sort_three(stack_a);
+    fill_a(stack_a, stack_b, &var);
+	while (!is_nsorted(stack_a))
 	{
-		fill_stack_b(stack_a, stack_b, &var, arr);
-		var.start -= var.offset;
-		if (var.start < 0)
-			var.start = 0;
-		var.end += var.offset;
-		if (var.end > size)
-			var.end = size;
-	}
-	while (!is_stack_empty(stack_b))
-	{
-		put_top(stack_b);
-		push_from_stack_b(stack_a, stack_b);
+		if (get_bottom(*stack_a) == ((*stack_a)->index - 1))
+                r_rotate(stack_a, 1);
 	}
 }

@@ -1,7 +1,7 @@
 CC = cc #need to change
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = push_swap.c functions/quick_sort.c functions/sort2.c functions/indexing2.c functions/sort.c parsing/parsing3.c parsing/parsing.c parsing/error.c parsing/parse_inst.c parsing/parsing_2.c functions/the_free.c functions/instructions_1.c functions/indexing.c functions/instructions_2.c functions/instructions_3.c
+SRCS = push_swap.c functions/sort_helper.c  functions/sort2.c functions/indexing2.c functions/sort.c parsing/parsing3.c parsing/parsing.c parsing/error.c parsing/parse_inst.c parsing/parsing_2.c functions/the_free.c functions/instructions_1.c functions/indexing.c functions/instructions_2.c functions/instructions_3.c
 BSRCS = ./bonus/checker.c parsing/parsing3.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c parsing/parsing.c parsing/parsing_2.c parsing/error.c parsing/parse_inst.c functions/indexing.c functions/indexing2.c functions/instructions_1.c functions/instructions_2.c functions/instructions_3.c functions/the_free.c 
 OFILES = $(SRCS:.c=.o)
 BFILES = $(BSRCS:.c=.o)

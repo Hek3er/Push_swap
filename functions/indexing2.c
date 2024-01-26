@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:54:09 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 19:35:38 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/10 01:42:34 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,46 @@ int	get_position(t_stack *stack, int ind)
 		i++;
 		stack = stack->next;
 	}
-	return (i);
+	return (-1);
 }
 
-void	put_top(t_stack **stack_b)
+void	put_top_a(t_stack **stack, int top)
 {
-	int	max;
 	int	pos;
+	int	mid;
 	int	size;
 
-	while (1 && !is_stack_empty(stack_b))
+	while (!is_stack_empty(stack) && get_size(*stack) >= 2)
 	{
-		size = get_size(*stack_b);
-		max = get_max(*stack_b);
-		pos = get_position(*stack_b, max);
-		if (pos == 0)
+		size = get_size(*stack);
+		mid = size / 2;
+		pos = get_position(*stack, top - 1);
+		if (pos == 0 || pos == -1)
 			break ;
-		else if (pos == 1)
-			swap(stack_b, 2);
-		else if (pos <= size / 2)
-			rotate(stack_b, 2);
-		else if (pos > size / 2)
-			r_rotate(stack_b, 2);
+		else 
+			r_rotate(stack, 1);
+	}
+}
+
+void	put_top_b(t_stack **stack)
+{
+	int	top;
+	int	mid;
+	int	size;
+	int	pos;
+
+	while (!is_stack_empty(stack) && get_size(*stack) >= 2)
+	{
+		size = get_size(*stack);
+		mid = size / 2;
+		top = get_top(*stack);
+		pos = get_position(*stack, top);
+		if (pos == 0 || pos == -1)
+			break ;
+		else if (pos <= mid)
+			rotate(stack, 2);
+		else
+			r_rotate(stack, 2);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 14:02:00 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 15:17:50 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/10 00:33:57 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	sort_three(t_stack **stack)
 
 	top = get_top(*stack);
 	bottom = get_bottom(*stack);
-	middle = (*stack)->next->value;
+	middle = (*stack)->next->index;
 	if (top > middle && bottom > middle && bottom > top)
 		swap(stack, 1);
 	else if (top > middle && middle > bottom)

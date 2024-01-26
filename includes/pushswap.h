@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:17:10 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 14:59:22 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/11 21:22:30 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ typedef struct s_var
 	int		j;
 	int		k;
 	int		wc;
+	int		pos;
 	int		mid;
 	int		offset;
 	int		start;
+	int		piv1;
+	int		piv2;
 	int		end;
 	int		size;
-	int		div;
+	int		rem;
 	char	**valid;
 	char	**result;
 	char	**temp;
@@ -90,7 +93,8 @@ int		get_max(t_stack *stack);
 int		get_min(t_stack *stack);
 int		get_bottom(t_stack *stack);
 int		get_position(t_stack *stack, int ind);
-void	put_top(t_stack **stack_b);
+void	put_top_a(t_stack **stack, int top);
+void	put_top_b(t_stack **stack);
 int		get_div(int size);
 
 /*
@@ -101,8 +105,9 @@ void	sort_two(t_stack **stack);
 void	sort_three(t_stack **stack);
 void	sort_four(t_stack **stack_a, t_stack **stack_b);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
-int		*fill_arr(t_stack *stack);
-void	quick_sort(int *arr, int len);
-void	large_sort(t_stack **stack_a, t_stack **stack_b, int size);
+void	large_sort(t_stack **stack_a, t_stack **stack_b);
+int		is_in_stack(t_stack *stack, int pivot);
+int		found(t_stack **stack_a, int pivot);
+void	fill_a(t_stack **stack_a, t_stack **stack_b, t_var *var);
 
 #endif

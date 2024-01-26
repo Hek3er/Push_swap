@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:07:22 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/09 14:49:13 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:46:25 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,37 @@ void	check_swap(char *line, t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
+static void	push_from_stack(t_stack **stack_a, t_stack **stack_b, int c)
+{
+	if (c == 1)
+	{
+		if (is_stack_empty(stack_a) == 1)
+			return ;
+		push((*stack_a)->value, (*stack_a)->index, stack_b, 4);
+		pop(stack_a);
+	}
+	else if (c == 2)
+	{
+		if (is_stack_empty(stack_b) == 1)
+			return ;
+		push((*stack_b)->value, (*stack_b)->index, stack_a, 4);
+		pop(stack_b);
+	}
+}
+
 void	check_push(char *line, t_stack **stack_a, t_stack **stack_b)
 {
 	if (ft_strncmp(line, "pb", 2) == 0)
 	{
 		if (is_stack_empty(stack_a))
 			free_exit(line, stack_a, stack_b);
-		push_from_stack_a(stack_a, stack_b);
+		push_from_stack(stack_a, stack_b, 1);
 	}
 	else if (ft_strncmp(line, "pa", 2) == 0)
 	{
 		if (is_stack_empty(stack_b))
 			free_exit(line, stack_a, stack_b);
-		push_from_stack_b(stack_a, stack_b);
+		push_from_stack(stack_a, stack_b, 2);
 	}
 }
 

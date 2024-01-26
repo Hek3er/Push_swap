@@ -6,7 +6,7 @@
 /*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 02:48:32 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 14:43:59 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:28:32 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,11 @@ int	get_min(t_stack *stack)
 int	get_bottom(t_stack *stack)
 {
 	t_stack	*current;
-	int		i;
 
-	i = 0;
 	if (!stack)
 		return (-1);
 	current = stack;
 	while (current -> next != NULL)
 		current = current -> next;
-	i = current -> value;
-	return (i);
+	return (current->index);
 }
