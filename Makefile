@@ -1,4 +1,4 @@
-CC = cc #need to change
+CC = cc 
 CFLAGS = -Wall -Werror -Wextra
 
 SRCS = push_swap.c functions/sort_helper.c  functions/sort2.c functions/indexing2.c functions/sort.c parsing/parsing3.c parsing/parsing.c parsing/error.c parsing/parse_inst.c parsing/parsing_2.c functions/the_free.c functions/instructions_1.c functions/indexing.c functions/instructions_2.c functions/instructions_3.c

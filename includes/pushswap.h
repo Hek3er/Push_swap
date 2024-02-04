@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:17:10 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/11 21:22:30 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:38:14 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ int		get_min(t_stack *stack);
 int		get_bottom(t_stack *stack);
 int		get_position(t_stack *stack, int ind);
 void	put_top_a(t_stack **stack, int top);
-void	put_top_b(t_stack **stack);
 int		get_div(int size);
 
 /*

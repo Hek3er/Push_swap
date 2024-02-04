@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   indexing2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:54:09 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/10 01:42:34 by azainabi         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:38:09 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,8 @@ void	put_top_a(t_stack **stack, int top)
 		pos = get_position(*stack, top - 1);
 		if (pos == 0 || pos == -1)
 			break ;
-		else 
-			r_rotate(stack, 1);
-	}
-}
-
-void	put_top_b(t_stack **stack)
-{
-	int	top;
-	int	mid;
-	int	size;
-	int	pos;
-
-	while (!is_stack_empty(stack) && get_size(*stack) >= 2)
-	{
-		size = get_size(*stack);
-		mid = size / 2;
-		top = get_top(*stack);
-		pos = get_position(*stack, top);
-		if (pos == 0 || pos == -1)
-			break ;
-		else if (pos <= mid)
-			rotate(stack, 2);
 		else
-			r_rotate(stack, 2);
+			r_rotate(stack, 1);
 	}
 }
 
