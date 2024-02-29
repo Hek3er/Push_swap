@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 03:19:01 by azainabi          #+#    #+#             */
-/*   Updated: 2024/02/09 04:22:19 by azainabi         ###   ########.fr       */
+/*   Created: 2024/02/08 01:42:16 by azainabi          #+#    #+#             */
+/*   Updated: 2024/02/09 05:12:53 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "../../includes/push_swap.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 43
-# endif
+char	*ft_strdup(const char *str)
+{
+	char	*ptr;
+	size_t	len;
+	size_t	i;
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-
-char		*get_next_line(int fd);
-int			get_len(char *str);
-char		*ft_join(char *s1, char *s2);
-int			n_search(char *s);
-
-#endif
+	len = ft_strlen(str);
+	ptr = malloc(sizeof(char) * (len + 1));
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		ptr[i] = str[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
+}

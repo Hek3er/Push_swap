@@ -1,47 +1,111 @@
-CC = cc 
+NAME = push_swap
+CHECKER = checker
+CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = push_swap.c functions/sort_helper.c  functions/sort2.c functions/indexing2.c functions/sort.c parsing/parsing3.c parsing/parsing.c parsing/error.c parsing/parse_inst.c parsing/parsing_2.c functions/the_free.c functions/instructions_1.c functions/indexing.c functions/instructions_2.c functions/instructions_3.c
-BSRCS = ./bonus/checker.c parsing/parsing3.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c parsing/parsing.c parsing/parsing_2.c parsing/error.c parsing/parse_inst.c functions/indexing.c functions/indexing2.c functions/instructions_1.c functions/instructions_2.c functions/instructions_3.c functions/the_free.c 
-OFILES = $(SRCS:.c=.o)
-BFILES = $(BSRCS:.c=.o)
-NAME = push_swap
-BONUS_NAME = checker
-LIB = ft_libft/libft.a printf/libftprintf.a
+SRC = push_swap.c \
+	  functions/indexing/get_last_ind.c \
+	  functions/indexing/get_max.c \
+	  functions/indexing/get_min.c \
+	  functions/indexing/index_stack.c \
+	  functions/linked_list/check_dup.c \
+	  functions/linked_list/get_pos_piv.c \
+	  functions/linked_list/get_size.c \
+	  functions/linked_list/instructions0.c \
+	  functions/linked_list/instructions1.c \
+	  functions/linked_list/instructions2.c \
+	  functions/linked_list/instructions3.c \
+	  functions/linked_list/is_found.c \
+	  functions/linked_list/is_in_stack.c \
+	  functions/linked_list/is_sorted.c \
+	  functions/linked_list/is_stack_empty.c \
+	  functions/linked_list/last_node.c \
+	  functions/linked_list/new_node.c \
+	  functions/linked_list/pop.c \
+	  functions/parsing/check_int.c \
+	  functions/parsing/create_stack.c \
+	  functions/parsing/error.c \
+	  functions/parsing/freeing.c \
+	  functions/parsing/ft_atoi.c \
+	  functions/parsing/ft_isdigit.c \
+	  functions/parsing/ft_strdup.c \
+	  functions/parsing/ft_strlcpy.c \
+	  functions/parsing/ft_strlen.c \
+	  functions/parsing/get_arg.c \
+	  functions/parsing/join_2d_array.c \
+	  functions/parsing/split.c \
+	  functions/sort/send_to_a.c \
+	  functions/sort/send_to_b.c \
+	  functions/sort/sort_five.c \
+	  functions/sort/sort_four.c \
+	  functions/sort/sort_three.c \
+	  functions/sort/sort_two.c \
+	  functions/text_functions/ft_putendl_fd.c \
+	  functions/text_functions/ft_putstr_fd.c \
 
-%.o: %.c includes/pushswap.h get_next_line/get_next_line.h
+OBJ = $(SRC:.c=.o)
+BSRC = bonus/checker.c \
+	   bonus/check_line.c \
+	   bonus/exc_cmd.c \
+	   bonus/ft_strcmp.c \
+	   functions/indexing/get_last_ind.c \
+	   functions/indexing/get_max.c \
+	   functions/indexing/get_min.c \
+	   functions/indexing/index_stack.c \
+	   functions/linked_list/check_dup.c \
+	   functions/linked_list/get_pos_piv.c \
+	   functions/linked_list/get_size.c \
+	   functions/linked_list/instructions0.c \
+	   functions/linked_list/instructions1.c \
+	   functions/linked_list/instructions2.c \
+	   functions/linked_list/instructions3.c \
+	   functions/linked_list/is_found.c \
+	   functions/linked_list/is_in_stack.c \
+	   functions/linked_list/is_sorted.c \
+	   functions/linked_list/is_stack_empty.c \
+	   functions/linked_list/last_node.c \
+	   functions/linked_list/new_node.c \
+	   functions/linked_list/pop.c \
+	   functions/parsing/check_int.c \
+	   functions/parsing/create_stack.c \
+	   functions/parsing/error.c \
+	   functions/parsing/freeing.c \
+	   functions/parsing/ft_atoi.c \
+	   functions/parsing/ft_isdigit.c \
+	   functions/parsing/ft_strdup.c \
+	   functions/parsing/ft_strlcpy.c \
+	   functions/parsing/ft_strlen.c \
+	   functions/parsing/get_arg.c \
+	   functions/parsing/join_2d_array.c \
+	   functions/parsing/split.c \
+	   get_next_line/get_next_line_utils.c \
+	   get_next_line/get_next_line.c \
+	   functions/text_functions/ft_putendl_fd.c \
+	   functions/text_functions/ft_putstr_fd.c \
+
+BOBJ = $(BSRC:.c=.o)
+
+HEADER = includes/push_swap.h
+
+%.o : %.c $(HEADER)
+	@echo "Compiling $< ..."
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(NAME)
+all : $(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-$(NAME): $(OFILES)
-	@echo "Compiling ft_printf!"
-	@cd printf && make
-	@echo "Compiling libft!"
-	@cd ft_libft && make
-	@echo "Compiling pushswap!"
-	@$(CC) $(CFLAGS) $(OFILES) $(LIB) -o $(NAME)
-	@echo "Pushswap Compiled!"
+bonus : $(BOBJ)
+	@$(CC) $(CFLAGS) $(BOBJ) -o $(CHECKER)
 
-bonus : $(BFILES)
-	@echo "Compiling ft_printf!"
-	@cd printf && make
-	@echo "Compiling libft!"
-	@cd ft_libft && make
-	@echo "Compiling checker!"
-	@$(CC) $(CFLAGS) $(BFILES) $(LIB) -o $(BONUS_NAME)
-	@echo "Checker Compiled!"
+clean :
+	@echo "cleaning"
+	@rm -rf $(OBJ) $(BOBJ)
 
-clean:
-	@echo "Removing Object Files!"
-	@cd ft_libft && make clean
-	@cd printf && make clean
-	@rm -rf $(OFILES) $(BFILES)
+fclean :
+	@echo "cleaning all"
+	@rm -rf $(OBJ) $(BOBJ) $(NAME) $(CHECKER)
 
-fclean: clean
-	@cd ft_libft && make fclean
-	@cd printf && make fclean
-	@rm -rf $(NAME) $(BONUS_NAME)
+re : fclean all
 
-re: fclean all
+.PHONY : clean fclean
 

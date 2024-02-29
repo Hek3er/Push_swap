@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 03:19:01 by azainabi          #+#    #+#             */
-/*   Updated: 2024/02/09 04:22:19 by azainabi         ###   ########.fr       */
+/*   Created: 2024/02/09 04:02:39 by azainabi          #+#    #+#             */
+/*   Updated: 2024/02/09 05:11:31 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "../includes/push_swap.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 43
-# endif
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-
-char		*get_next_line(int fd);
-int			get_len(char *str);
-char		*ft_join(char *s1, char *s2);
-int			n_search(char *s);
-
-#endif
+	i = 0;
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while ((str1[i] || str2[i]) && i < n)
+	{
+		if (str1[i] > str2[i])
+			return (str1[i] - str2[i]);
+		if (str1[i] < str2[i])
+			return (str1[i] - str2[i]);
+		i++;
+	}
+	return (0);
+}

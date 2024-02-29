@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 03:19:01 by azainabi          #+#    #+#             */
-/*   Updated: 2024/02/09 04:22:19 by azainabi         ###   ########.fr       */
+/*   Created: 2024/02/07 22:20:20 by azainabi          #+#    #+#             */
+/*   Updated: 2024/02/09 05:13:28 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "../../includes/push_swap.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 43
-# endif
+void	ft_putendl_fd(char *s, int fd)
+{
+	int	i;
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-
-char		*get_next_line(int fd);
-int			get_len(char *str);
-char		*ft_join(char *s1, char *s2);
-int			n_search(char *s);
-
-#endif
+	if (fd < 0)
+		return ;
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
+	write(fd, "\n", 1);
+}

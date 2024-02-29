@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   index_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 03:19:01 by azainabi          #+#    #+#             */
-/*   Updated: 2024/02/09 04:22:19 by azainabi         ###   ########.fr       */
+/*   Created: 2024/02/08 04:58:57 by azainabi          #+#    #+#             */
+/*   Updated: 2024/02/09 05:11:49 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "../../includes/push_swap.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 43
-# endif
+void	index_stack(t_stack **stack, int size)
+{
+	t_stack	*curr;
+	t_stack	*iterator;
+	int		i;
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-
-char		*get_next_line(int fd);
-int			get_len(char *str);
-char		*ft_join(char *s1, char *s2);
-int			n_search(char *s);
-
-#endif
+	if (!stack || !(*stack))
+		return ;
+	curr = (*stack);
+	while (curr)
+	{
+		i = 0;
+		iterator = (*stack);
+		while (iterator)
+		{
+			if (iterator->data > curr->data)
+				i++;
+			iterator = iterator->next;
+		}
+		curr->index = size - i - 1;
+		curr = curr->next;
+	}
+}

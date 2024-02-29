@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 03:19:01 by azainabi          #+#    #+#             */
-/*   Updated: 2024/02/09 04:22:19 by azainabi         ###   ########.fr       */
+/*   Created: 2024/02/08 01:48:05 by azainabi          #+#    #+#             */
+/*   Updated: 2024/02/09 05:12:50 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "../../includes/push_swap.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 43
-# endif
-
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
-
-char		*get_next_line(int fd);
-int			get_len(char *str);
-char		*ft_join(char *s1, char *s2);
-int			n_search(char *s);
-
-#endif
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}

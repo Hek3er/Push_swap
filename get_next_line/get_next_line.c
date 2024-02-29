@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:16:50 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 11:16:53 by azainabi         ###   ########.fr       */
+/*   Created: 2023/11/24 03:18:41 by azainabi          #+#    #+#             */
+/*   Updated: 2024/02/09 04:23:45 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static char	*delete_newline(char *buffer)
 		i++;
 	if (buffer[i] == '\n')
 		i++;
-	new = malloc(sizeof(char) * (ft_len(buffer) - i + 1));
+	new = malloc(sizeof(char) * (get_len(buffer) - i + 1));
 	if (!new)
 		return (NULL);
 	i = 0;

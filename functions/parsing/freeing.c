@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   freeing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 03:19:01 by azainabi          #+#    #+#             */
-/*   Updated: 2024/02/09 04:22:19 by azainabi         ###   ########.fr       */
+/*   Created: 2024/02/08 01:06:10 by azainabi          #+#    #+#             */
+/*   Updated: 2024/02/09 05:12:45 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "../../includes/push_swap.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 43
-# endif
+void	free_stack(t_stack **stack)
+{
+	t_stack	*current;
+	t_stack	*temp;
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <limits.h>
+	current = *stack;
+	while (current)
+	{
+		temp = current;
+		current = current -> next;
+		free(temp);
+	}
+}
 
-char		*get_next_line(int fd);
-int			get_len(char *str);
-char		*ft_join(char *s1, char *s2);
-int			n_search(char *s);
+void	free_arr(char **arr)
+{
+	int	i;
 
-#endif
+	if (!arr)
+		return ;
+	i = 0;
+	while (arr[i])
+		i++;
+	while (--i >= 0)
+		free(arr[i]);
+	free(arr);
+}

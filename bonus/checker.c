@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:15:59 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 15:15:48 by azainabi         ###   ########.fr       */
+/*   Created: 2024/02/09 03:52:04 by azainabi          #+#    #+#             */
+/*   Updated: 2024/02/09 22:48:16 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "../includes/push_swap.h"
 
 int	main(int ac, char **av)
 {
@@ -23,16 +23,16 @@ int	main(int ac, char **av)
 	line = get_next_line(0);
 	while (line)
 	{
-		check_line(line, &stack_a, &stack_b);
+		check_line(&stack_a, &stack_b, line);
 		free(line);
 		line = get_next_line(0);
 	}
 	if (line)
 		free(line);
-	if (is_nsorted(&stack_a) && is_stack_empty(&stack_b))
-		ft_putstr_fd("OK\n", 2);
+	if (is_sorted(&stack_a) && !get_size(stack_b))
+		ft_putendl_fd("OK", 1);
 	else
-		ft_putstr_fd("KO\n", 2);
+		ft_putendl_fd("KO", 1);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 }

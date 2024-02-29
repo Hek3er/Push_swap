@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azainabi <azainabi@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: azainabi <azainabi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:16:43 by azainabi          #+#    #+#             */
-/*   Updated: 2024/01/08 11:16:46 by azainabi         ###   ########.fr       */
+/*   Created: 2023/11/24 19:46:07 by azainabi          #+#    #+#             */
+/*   Updated: 2024/02/09 04:26:09 by azainabi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_len(char *str)
+int	get_len(char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -30,7 +30,7 @@ static char	*ft_strdup(char *str)
 	size_t	len;
 	size_t	i;
 
-	len = ft_len(str);
+	len = get_len(str);
 	ptr = malloc(sizeof(char) * (len + 1));
 	if (!ptr)
 		return (NULL);
@@ -59,7 +59,7 @@ char	*ft_join(char *s1, char *s2)
 	}
 	i = 0;
 	j = 0;
-	joined = malloc(sizeof(char) * (ft_len(s1) + ft_len(s2) + 1));
+	joined = malloc(sizeof(char) * (get_len(s1) + get_len(s2) + 1));
 	if (!joined)
 		return (free(s1), NULL);
 	while (s1[i])
@@ -75,10 +75,10 @@ char	*ft_join(char *s1, char *s2)
 
 int	n_search(char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (i <= ft_len(s))
+	while (i <= get_len(s))
 	{
 		if (s[i] == '\n')
 			return (1);
